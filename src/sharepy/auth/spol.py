@@ -59,6 +59,7 @@ class SharePointOnline(BaseAuth):
             raise errors.AuthError("Token request failed. Invalid server response")
 
         # Extract token from returned XML
+        print(f"RECEIVED:\n{response.text}\n")
         token = root.find(".//wsse:BinarySecurityToken", ns)
         # Check for errors and print error messages
         if token is None or root.find(".//S:Fault", ns) is not None:
